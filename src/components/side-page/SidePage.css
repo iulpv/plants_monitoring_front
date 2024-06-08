@@ -1,0 +1,62 @@
+.sidePage {
+    background-color: rgb(16, 130, 89, 30%);
+    max-width: 400px;
+    min-height: 100vh;
+    border-radius: 0 25px 25px 0;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-family: "PT Sans Caption", serif;
+    font-size: 40px;
+}
+
+.menuSep {
+    background-color: rgb(75, 176, 134, 54%);
+    border: none;
+    height: 3px;
+    width: 100%;
+}
+
+.tabBlock {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tab {
+    width: 100%;
+    font-family: "PT Mono", serif;
+    font-size: 32px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.tabSelected {
+    background-color: rgb(75, 176, 134, 54%);
+    border-radius: 10px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .sidePage {
+        background-color: transparent;
+        width: 100vw;
+        padding: 30px;
+        min-height: min-content;
+    }
+
+    .logo {
+        font-size: 36px;
+    }
+
+    .tab {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,80 @@
+.infoBlock {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
+}
+
+.plantsInfoBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15vh;
+}
+
+.plantsInfo {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    width: 30vw;
+}
+
+.plantsInfoLabel {
+    font-family: "PT Sans Caption", serif;
+    font-size: 32px;
+}
+
+.plantsInfoContent {
+    font-family: "PT Mono", serif;
+    font-size: 32px;
+    word-wrap: break-word;
+}
+
+.image {
+    width: 450px;
+    height: 550px;
+    border-radius: 15px;
+}
+
+.imageBlock {
+    padding: 30px;
+    background-color: rgb(16, 130, 89, 30%);
+}
+
+@media screen and (max-width: 700px) {
+    .infoBlock {
+        flex-direction: column;
+        justify-content: center;
+        width: 80vw;
+    }
+
+    .plantsInfoBlock {
+        margin-top: 0;
+        width: 80vw;
+
+    }
+
+    .plantsInfo {
+        width: 70vw;
+    }
+
+    .plantsInfoLabel {
+        font-size: 20px;
+    }
+
+    .plantsInfoContent {
+        font-size: 20px;
+    }
+
+    .image {
+        width: 80vw;
+        height: 65vh;
+    }
+
+    .imageBlock {
+        width: 80vw;
+        height: 65vh;
+        background: transparent;
+        padding: 0;
+    }
+}
+

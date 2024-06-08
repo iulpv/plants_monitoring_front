@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import SidePage from "./components/side-page/SidePage";
+import {getCameraPhoto, ResponseModel} from "./apiClient";
+import PlantsInfo from "./components/plants-info/PlantsInfo";
 
+export enum Errors {
+    AutoError = 'Проверьте подключение к камере',
+    UploadError = 'Сервис недоступен'
+}
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [plantsInfo, setPlantsInfo] =
+        useState<ResponseModel | undefined>(undefined)
+
+    const [error, setError] = useState<string | undefined>(undefined)
+
+    useEffect(() => {
+        getCameraPhoto().then(r => setPlantsInfo(r))
+            .catch(_ => setError(Errors.AutoError))
+    }, []);
+
+    return (
+        <div className="mainBlock">
+            <SidePage plantsInfo={plantsInfo} setPlantsInfo={setPlantsInfo} setError={setError}/>
+            <div className="contentBlock">
+                {error !== undefined ?
+                    <span className='info'>{error}</span> :
+                    plantsInfo !== undefined &&
+                    <PlantsInfo plant_type={plantsInfo.plant_type}
+                                                            plant_disease={plantsInfo.plant_disease}
+                                                            probability={plantsInfo.probability}
+                                                            photo={plantsInfo.photo}/>
+                }
+            </div>
+        </div>
+    );
 }
 
 export default App;
